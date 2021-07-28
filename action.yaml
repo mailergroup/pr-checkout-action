@@ -1,0 +1,19 @@
+name: "PR Checkout action"
+description: "Checks out PR with hub cli"
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout PR
+      shell: bash
+      id: checkout_pr
+      run: |
+        PR_URL="${{ github.event.issue.pull_request.url }}"
+        PR_NUM=${PR_URL##*/}
+        echo "Checking out from PR #$PR_NUM based on URL: $PR_URL"
+        hub pr checkout $PR_NUM
+    - name: Set slug
+      shell: bash
+      id: checkout_pr
+      run: |
+        export CI_HEAD_REF_SLUG=$(hub branch --show-current) 
+        echo $CI_HEAD_REF_SLUG
