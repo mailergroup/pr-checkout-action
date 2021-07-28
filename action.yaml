@@ -5,7 +5,6 @@ runs:
   steps:
     - name: Checkout PR
       shell: bash
-      id: checkout_pr
       run: |
         PR_URL="${{ github.event.issue.pull_request.url }}"
         PR_NUM=${PR_URL##*/}
@@ -13,7 +12,6 @@ runs:
         hub pr checkout $PR_NUM
     - name: Set slug
       shell: bash
-      id: set_slug
       run: |
         export CI_HEAD_REF_SLUG=$(hub branch --show-current) 
         echo $CI_HEAD_REF_SLUG
