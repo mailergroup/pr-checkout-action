@@ -13,5 +13,5 @@ runs:
     - name: Set slug
       shell: bash
       run: |
-        export CI_HEAD_REF_SLUG=$(hub branch --show-current) 
+        export CI_HEAD_REF_SLUG=$(hub branch --show-current | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z) 
         echo $CI_HEAD_REF_SLUG
