@@ -13,7 +13,7 @@ runs:
         hub pr checkout $PR_NUM
     - name: Set slug
       shell: bash
-      id: checkout_pr
+      id: set_slug
       run: |
         export CI_HEAD_REF_SLUG=$(hub branch --show-current) 
         echo $CI_HEAD_REF_SLUG
