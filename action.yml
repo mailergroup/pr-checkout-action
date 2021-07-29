@@ -13,5 +13,5 @@ runs:
     - name: Set slug
       shell: bash
       run: |
-        run: echo "CI_HEAD_REF_SLUG=$(git branch --show-current | iconv -t ascii | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)" >> $GITHUB_ENV
+        echo "CI_HEAD_REF_SLUG=$(git branch --show-current | iconv -t ascii | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)" >> $GITHUB_ENV
         echo $CI_HEAD_REF_SLUG
