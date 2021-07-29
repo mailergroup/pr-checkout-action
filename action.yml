@@ -14,4 +14,6 @@ runs:
       shell: bash
       run: |
         echo "CI_HEAD_REF_SLUG=$(git branch --show-current | iconv -t ascii | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)" >> $GITHUB_ENV
+        echo "CI_HEAD_REF=$(git branch --show-current)" >> $GITHUB_ENV
         echo $CI_HEAD_REF_SLUG
+        echo $CI_HEAD_REF
